@@ -78,7 +78,7 @@ input:focus {
 button {
   height: 50px;
   width: 100%;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: #2575fc;
   color: white;
   border: none;
   border-radius: 8px;
@@ -98,7 +98,7 @@ button:hover {
 }
 
 .register-text a {
-  color: #671769;
+  color:#2575fc;
   font-weight: bold;
   text-decoration: none;
 }

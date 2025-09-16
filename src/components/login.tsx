@@ -26,7 +26,7 @@ const LoginPage: React.FC = () => {
                 <input type="password" placeholder="Enter password" />
               </div>
 
-              <button type="submit">Login</button>
+              <button type="submit" >Login</button>
             </form>
 
             <p className="register-text">
