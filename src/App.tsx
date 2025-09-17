@@ -7,6 +7,7 @@ import Register from './components/register'
 import Home from './components/home'
 import './styles/global.css'
 import {Route , Routes} from 'react-router-dom'
+import Landing from './components/landing'
 
 function App() {
   
@@ -15,6 +16,10 @@ function App() {
     <Routes>
         <Route
         index
+        element = {<Landing />}
+        />
+        <Route
+        path ='landing'
         element = {<LoginForm />}
         />
   
