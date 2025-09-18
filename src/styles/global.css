@@ -327,3 +327,13 @@ button:hover {
     text-align: center;
   }
 }
+/*Home Page*/
+.profile img{
+  height: 50px;
+}
+.company {
+  display: none;
+  color: transparent;
+  visibility: hidden;
+}
+
