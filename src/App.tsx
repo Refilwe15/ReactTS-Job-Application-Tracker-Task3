@@ -19,7 +19,7 @@ function App() {
         element = {<Landing />}
         />
         <Route
-        path ='landing'
+        path ='login'
         element = {<LoginForm />}
         />
   

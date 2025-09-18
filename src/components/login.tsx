@@ -5,22 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const username = String(formData.get("username") ?? "").trim();
-    const password = String(formData.get("password") ?? "").trim();
-
-    if (!username || !password) {
-      alert("Please enter username and password");
-      return;
-    }
-
-    
-    navigate("/home");
-  };
+  
 
   return (
     <div className="main-container">
@@ -33,7 +19,7 @@ const LoginPage: React.FC = () => {
             Enter to get unlimited access to data & information
           </p>
 
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" >
             <div className="form-group">
               <label>Username</label>
               <input type="text" name="username" placeholder="Enter username" />
