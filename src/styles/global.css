@@ -2,7 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #b2bbc9;
+  background-color:white;
  
 }
 
@@ -17,7 +17,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  background-color: #ecdbee;
+  background-color:#ffffff;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
   border-radius: 5px;
   position: sticky; 
@@ -68,8 +68,8 @@ body {
 }
 
 .logo {
-  height: 80px;
-  width: 80px;
+  height: 90px;
+  width: 90px;
   margin-bottom: 20px;
 }
 
@@ -123,7 +123,7 @@ input:focus {
 button {
   height: 50px;
   width: 100%;
-  background: #2575fc;
+  background-color: #2575fc;
   color: white;
   border: none;
   border-radius: 8px;
@@ -311,7 +311,7 @@ button:hover {
 }
 
 .hero-image img {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   height: auto;
 }
@@ -328,134 +328,178 @@ button:hover {
   }
 }
 /*Home Page*/
-.profile img{
-  height: 50px;
-}
-.company {
-  display: none;
-  color: transparent;
-  visibility: hidden;
-}
-/*Home Page*/
 body {
-  padding: 0;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #b2bbc9;
+  background-color: #e4e7ec;
 }
 
-/* Navbar */
-.navbar {
+/* Main Layout */
+.home-container {
+  padding: 30px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Top Bar */
+.top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background-color: #ecdbee;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background: #ffffff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
 }
-
-.logo {
-  font-size: 1.8rem;
+/* Page Title */
+.title {
+  margin-bottom: 15px;
+  font-size: 1.6em;
   font-weight: bold;
-  color: #007bff;
-}
-
-.profile img {
-  height: 50px;
-  border-radius: 50%;
-}
-
-/* Landing container */
-.landing {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: white;
-  padding: 20px 60px;
-}
-
-/* Job Card */
-.job-container {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 30px auto;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.company {
-  display: block;
   color: #333;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
 }
 
-.company-logo {
-  display: block;
-  margin: 15px auto;
+/* Add Job Button below table */
+.add-job-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-job-btn {
+  background: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  border: none;
   border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
 }
 
-/* Status colors */
+.add-job-btn:hover {
+  background: #1e4fd6;
+}
+
+
+/* Table */
+.table-wrapper {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.job-table th,
+.job-table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.job-table th {
+  background: #f8f9fb;
+  color: #444;
+}
+
+.job-table tr:hover {
+  background: #f3f6fb;
+}
+
 .status {
   font-weight: bold;
   padding: 6px 12px;
-  border-radius: 8px;
-  display: inline-block;
-  margin-top: 8px;
+  border-radius: 6px;
+  color: white;
 }
 
-.status.interview-scheduled,
-.status.applied,
-.status.accepted {
-  color: #155724;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-}
+.status.applied { background: #f59e0b; }
+.status.interviewed { background: #10b981; }
+.status.rejected { background: #ef4444; }
 
-.status.in-progress,
-.status.pending {
-  color: #856404;
-  background-color: #fff3cd;
-  border: 1px solid #ffeeba;
-}
-
-.status.rejected {
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-}
-
-
-.job-actions {
+.actions {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
-  justify-content: center;
 }
 
-.job-actions button {
-  background: #2575fc;
-  color: white;
+.edit-btn,
+.delete-btn {
+  padding: 6px 12px;
   border: none;
-  padding: 10px 15px;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  color: white;
+  font-size: 0.9em;
 }
 
-.job-actions button:hover {
-  background: #1a5dcc;
+.edit-btn { background: #2563eb; }
+.edit-btn:hover { background: #1e4fd6; }
+
+.delete-btn { background: #dc2626; }
+.delete-btn:hover { background: #b91c1c; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.job-form input,
+.job-form select,
+.job-form textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-btn {
+  background: #777;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover { background: #555; }
+
+.save-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.save-btn:hover { background: #1e4fd6; }
 

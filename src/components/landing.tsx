@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import rocket from "../assets/rocket.png";
+import dip from "../assets/dip.png";
 
 
 export default function Landing() {
@@ -47,7 +47,7 @@ export default function Landing() {
         </div>
 
         <div className="hero-image">
-          <img src={rocket} alt="Rocket Girl" />
+          <img src={dip} alt="Rocket Girl" />
         </div>
       </div>
     </div>

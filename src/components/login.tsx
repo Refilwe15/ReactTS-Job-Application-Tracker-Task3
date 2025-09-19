@@ -8,7 +8,9 @@ const LoginPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    
     // Extract data from form inputs
+
     const form = e.currentTarget;
     const formData = new FormData(form);
     const username = String(formData.get("username") ?? "").trim();

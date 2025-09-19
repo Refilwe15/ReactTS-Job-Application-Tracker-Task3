@@ -1,75 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 
-import profile from "../assets/profile.png";
-
-// Example job data (replace with real data later)
-const jobs = [
-  {
-    company: "ABSA",
-    logo: "https://via.placeholder.com/80",
-    date: "2025-09-18",
-    role: "Software Developer",
-    status: "In Progress",
-  },
-  {
-    company: "Nedbank",
-    logo: "https://via.placeholder.com/80",
-    date: "2025-09-12",
-    role: "Data Analyst",
-    status: "Rejected",
-  },
-  {
-    company: "FNB",
-    logo: "https://via.placeholder.com/80",
-    date: "2025-09-10",
-    role: "UI/UX Designer",
-    status: "In Progress",
-  },
-];
 
 function Home() {
+  const [showForm, setShowForm] = useState(false);
+
+  const jobs = [
+    { id: 1, company: "Google", role: "Frontend Developer", status: "Applied", dateApplied: "2025-09-10" },
+    { id: 2, company: "Amazon", role: "Backend Engineer", status: "Interviewed", dateApplied: "2025-09-15" },
+    { id: 3, company: "Microsoft", role: "UI Designer", status: "Rejected", dateApplied: "2025-09-01" },
+  ];
+
   return (
-    <div className="landing">
-      {/* Navbar */}
-              <div className="logo">JobTracker</div>
+    <div className="home-container">
+      {/* Page Title */}
+      <h2 className="title">JobTracker</h2>
 
-        <div className="profile">                
-          <img src={profile} alt="Profile" />
-        </div>
-      </nav>
+      {/* Table */}
+      <div className="table-wrapper">
+        <table className="job-table">
+          <thead>
+            <tr>
+              <th>Company Name</th>
+              <th>Role</th>
+              <th>Date Applied</th>
+              <th>Status</th>
+              <th className="actions-col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jobs.map((job) => (
+              <tr key={job.id}>
+                <td>{job.company}</td>
+                <td>{job.role}</td>
+                <td>{job.dateApplied}</td>
+                <td>
+                  <span className={`status ${job.status.toLowerCase()}`}>{job.status}</span>
+                </td>
+                <td className="actions">
+                  <button className="edit-btn">Edit</button>
+                  <button className="delete-btn">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      {/* Job Cards */}
-      {jobs.map((job, index) => (
-        <div className="job-container" key={index}>
-          <p className="company">Company: {job.company}</p>
+      {/* Add Job Button */}
+      <div className="add-job-container">
+        <button className="add-job-btn" onClick={() => setShowForm(true)}>+ Add Job</button>
+      </div>
 
-          <img
-            src={job.logo}
-            alt={`${job.company} Logo`}
-            className="company-logo"
-          />
-
-          <p>Date: {job.date}</p>
-          <p>Role: {job.role}</p>
-          <p className={`status ${job.status.replace(/\s+/g, "-").toLowerCase()}`}>
-            Status: {job.status}
-          </p>
-
-          <div className="job-actions">
-
-            <button>
-              Edit
-            </button>
-            <button>
-               View
-            </button>
-
-            <button>
-               Delete
-            </button>
+      {/* Add Job Modal */}
+      {showForm && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Add New Job</h3>
+            <form className="job-form">
+              <input type="text" placeholder="Company Name" required />
+              <input type="text" placeholder="Role" required />
+              <input type="date" required />
+              <select>
+                <option>Applied</option>
+                <option>Interviewed</option>
+                <option>Rejected</option>
+              </select>
+              <textarea placeholder="Extra details..." rows ={6}></textarea>
+              <div className="form-actions">
+                <button type="button" className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
+                <button type="submit" className="save-btn">Save</button>
+              </div>
+            </form>
           </div>
         </div>
-      ))}
+      )}
     </div>
   );
 }
