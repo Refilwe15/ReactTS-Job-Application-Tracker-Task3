@@ -35,12 +35,12 @@ const LoginPage: React.FC = () => {
 
     // Check if details match
     if (parsedUser.username === username && parsedUser.password === password) {
-      // Optional: mark session
+      
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("currentUser", JSON.stringify(parsedUser));
 
       alert("Login Successful!");
-      form.reset();
+    
 
       navigate("/home");
     } else {

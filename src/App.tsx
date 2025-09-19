@@ -5,6 +5,7 @@ import './App.css'
 import LoginForm from './components/login'
 import Register from './components/register'
 import Home from './components/home'
+import Job from './components/job'
 import './styles/global.css'
 import {Route , Routes} from 'react-router-dom'
 import Landing from './components/landing'
@@ -30,6 +31,10 @@ function App() {
         <Route
         path="home"
         element={<Home />}
+       />
+       <Route
+       path ="job"
+       element={<Job />}
        />
     </Routes>
   )
