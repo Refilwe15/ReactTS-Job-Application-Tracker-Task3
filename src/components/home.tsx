@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Define the Job type
@@ -34,7 +34,7 @@ function Home() {
   const navigate = useNavigate();
 
   // Handle form submit
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (editingJobId !== null) {
