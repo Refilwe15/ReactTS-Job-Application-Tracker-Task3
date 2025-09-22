@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    
-    // Extract data from form inputs
 
     const form = e.currentTarget;
     const formData = new FormData(form);
     const username = String(formData.get("username") ?? "").trim();
     const password = String(formData.get("password") ?? "").trim();
 
-    // Check if values are entered
     if (!username || !password) {
       alert("Please enter username and password");
       return;
     }
 
-    // Get stored user from localStorage (key must match Register.tsx → "user")
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       alert("No registered user found. Please register first.");
@@ -30,27 +26,25 @@ const LoginPage: React.FC = () => {
       return;
     }
 
-    // Parse stored user
     const parsedUser = JSON.parse(storedUser);
 
-    // Check if details match
-    if (parsedUser.username === username && parsedUser.password === password) {
-      
-      localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("currentUser", JSON.stringify(parsedUser));
+    setLoading(true); // show loader
 
-      alert("Login Successful!");
-    
-
-      navigate("/home");
-    } else {
-      alert("Invalid Credentials!!!");
-    }
+    setTimeout(() => {
+      if (parsedUser.username === username && parsedUser.password === password) {
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("currentUser", JSON.stringify(parsedUser));
+        alert("Login Successful!");
+        navigate("/home");
+      } else {
+        alert("Invalid Credentials!!!");
+      }
+      setLoading(false); // hide loader after processing
+    }, 1500); // simulate network delay
   };
 
   return (
     <div className="main-container">
-      {/* Left Container */}
       <div className="left-container">
         <div className="login-box">
           <img src={logo} className="logo" alt="Logo" />
@@ -59,7 +53,6 @@ const LoginPage: React.FC = () => {
             Enter to get unlimited access to data & information
           </p>
 
-          
           <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Username</label>
@@ -75,11 +68,17 @@ const LoginPage: React.FC = () => {
               />
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
           </form>
 
+          {loading && (
+            <div className="loader"></div> // CSS spinner
+          )}
+
           <p className="register-text">
-            Don't have an account? <Link to={"register"}>Register here</Link>
+            Don't have an account? <Link to={"/register"}>Register here</Link>
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEdit, FaTrash, FaPlus } from "react-icons/fa"; // icons
 
 // Define the Job type
 type Job = {
@@ -22,6 +23,8 @@ function Home() {
   }, [jobs]);
 
   const [showForm, setShowForm] = useState(false);
+  const [showDetails, setShowDetails] = useState(false); // NEW state for details modal
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   // Form fields
   const [company, setCompany] = useState("");
@@ -30,8 +33,6 @@ function Home() {
   const [status, setStatus] = useState<"Applied" | "Rejected" | "Interviewed">("Applied");
   const [details, setDetails] = useState("");
   const [editingJobId, setEditingJobId] = useState<number | null>(null);
-
-  const navigate = useNavigate();
 
   // Handle form submit
   const handleSubmit = (e: React.FormEvent) => {
@@ -79,10 +80,19 @@ function Home() {
     setShowForm(true);
   };
 
-  // Handle Delete
+  // Handle Delete with confirmation
   const handleDelete = (id: number) => {
-    const filteredJobs = jobs.filter((job) => job.id !== id);
-    setJobs(filteredJobs);
+    const confirmDelete = window.confirm("Are you sure you want to delete this job?");
+    if (confirmDelete) {
+      const filteredJobs = jobs.filter((job) => job.id !== id);
+      setJobs(filteredJobs);
+    }
+  };
+
+  // Handle View
+  const handleView = (job: Job) => {
+    setSelectedJob(job);
+    setShowDetails(true);
   };
 
   return (
@@ -121,20 +131,14 @@ function Home() {
                   </span>
                 </td>
                 <td className="actions">
-                  <button
-                    className="view-btn"
-                    onClick={() => navigate(`/job/${job.id}`)}
-                  >
-                    View More
+                  <button className="view-btn" onClick={() => handleView(job)}>
+                    <FaEye /> View
                   </button>
                   <button className="edit-btn" onClick={() => handleEdit(job)}>
-                    Edit
+                    <FaEdit /> Edit
                   </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(job.id)}
-                  >
-                    Delete
+                  <button className="delete-btn" onClick={() => handleDelete(job.id)}>
+                    <FaTrash /> Delete
                   </button>
                 </td>
               </tr>
@@ -146,7 +150,7 @@ function Home() {
       {/* Add Job Button */}
       <div className="add-job-container">
         <button className="add-job-btn" onClick={() => setShowForm(true)}>
-          + Add Job
+          <FaPlus /> Add Job
         </button>
       </div>
 
@@ -208,6 +212,29 @@ function Home() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Job Details Modal */}
+      {showDetails && selectedJob && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Job Details</h3>
+            <p><strong>Company:</strong> {selectedJob.company}</p>
+            <p><strong>Role:</strong> {selectedJob.role}</p>
+            <p><strong>Date Applied:</strong> {selectedJob.dateApplied}</p>
+            <p><strong>Status:</strong> {selectedJob.status}</p>
+            <p><strong>Details:</strong> {selectedJob.details || "No extra details"}</p>
+            <div className="form-actions">
+              <button
+                type="button"
+                className="cancel-btn"
+                onClick={() => setShowDetails(false)}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
