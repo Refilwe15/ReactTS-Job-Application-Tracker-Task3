@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/login.css"; // Import the CSS file for styling
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(""); // For custom messages
+  const [messageType, setMessageType] = useState<"success" | "error">("error");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,32 +18,39 @@ const LoginPage: React.FC = () => {
     const password = String(formData.get("password") ?? "").trim();
 
     if (!username || !password) {
-      alert("Please enter username and password");
+      setMessage("Please enter username and password");
+      setMessageType("error");
       return;
     }
 
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
-      alert("No registered user found. Please register first.");
+      setMessage("No registered user found. Please register first.");
+      setMessageType("error");
       navigate("/register");
       return;
     }
 
     const parsedUser = JSON.parse(storedUser);
 
-    setLoading(true); // show loader
+    setLoading(true);
 
     setTimeout(() => {
       if (parsedUser.username === username && parsedUser.password === password) {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("currentUser", JSON.stringify(parsedUser));
-        alert("Login Successful!");
-        navigate("/home");
+        setMessage("Login Successful!");
+        setMessageType("success");
+
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000); // small delay before navigation
       } else {
-        alert("Invalid Credentials!!!");
+        setMessage("Invalid Credentials!!!");
+        setMessageType("error");
       }
-      setLoading(false); // hide loader after processing
-    }, 1500); // simulate network delay
+      setLoading(false);
+    }, 1500);
   };
 
   return (
@@ -52,6 +62,13 @@ const LoginPage: React.FC = () => {
           <p className="subtitle">
             Enter to get unlimited access to data & information
           </p>
+
+          {/* Custom message */}
+          {message && (
+            <div className={`message ${messageType}`}>
+              {message}
+            </div>
+          )}
 
           <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -73,9 +90,7 @@ const LoginPage: React.FC = () => {
             </button>
           </form>
 
-          {loading && (
-            <div className="loader"></div> // CSS spinner
-          )}
+          {loading && <div className="loader"></div>}
 
           <p className="register-text">
             Don't have an account? <Link to={"/register"}>Register here</Link>
