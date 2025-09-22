@@ -4,7 +4,6 @@ import Register from './components/register'
 import Home from './components/home'
 import Job from './components/job'
 import FileNotFound from './components/fileNotFound'
-import './styles/global.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './components/landing'
 

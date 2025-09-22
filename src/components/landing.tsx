@@ -1,53 +1,40 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import dip from "../assets/dip.png";
-
+import "../styles/landing.css";
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
     <div className="landing">
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">JobTracker</div>
-
         <div>
-            <ul>
-                <li>
-                    Home
-                </li>
-                <li>
-                    Contact
-                </li>
-                <li>
-                    About Us
-                </li>
-            </ul>
+          <ul>
+            <li>Home</li>
+            <li>Contact</li>
+            <li>About Us</li>
+          </ul>
         </div>
-
       </nav>
 
-      {/* Hero Section */}
       <div className="hero">
         <div className="hero-text">
-          <h1>Map Your Way to the Dream Job </h1>
+          <h1>Find a Job With Your Interests and Abilities</h1>
           <p>
             Track applications, stay organized, and land your next opportunity
             with ease.
           </p>
-        <div className="buttons">
-          <button className="btn sign-in" onClick={() => navigate("/login")}>
-            Sign In
+          <button className="btn get-started" onClick={() => navigate("/login")}>
+            Get Started
           </button>
-          <button className="btn sign-up" onClick={() => navigate("/register")}>
-            Sign Up
-          </button>
-        </div>
         </div>
 
         <div className="hero-image">
-          <img src={dip} alt="Rocket Girl" />
+          <img 
+            src="https://assets.softr-files.com/applications/93f39c10-c73a-440c-a51a-a5ef6b92f678/assets/1dcd4024-07fd-448b-9b6b-c0d64741f794.svg" 
+            alt="Job Tracker Illustration" 
+          />
         </div>
       </div>
     </div>
