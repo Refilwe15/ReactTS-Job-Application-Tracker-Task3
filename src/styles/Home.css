@@ -20,7 +20,7 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #2575fc;
+  color: #25cafc;
 }
 
 /* --- Table --- */
@@ -133,7 +133,7 @@
 }
 
 .add-job-btn {
-  background: #2575fc;
+  background-color: #48c9b0;
   color: #fff;
   font-weight: 600;
   border: none;

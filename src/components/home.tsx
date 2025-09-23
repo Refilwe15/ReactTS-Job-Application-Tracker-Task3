@@ -175,7 +175,7 @@ function Home() {
           </table>
         </div>
       ) : (
-        <p className="no-jobs">No jobs added yet. Start by adding one below 👇</p>
+        <p className="no-jobs">No jobs added yet. Start by adding one below </p>
       )}
 
       {/* Add Job Button */}

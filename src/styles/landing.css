@@ -19,16 +19,19 @@ body {
   align-items: center;
   padding: 20px 60px;
   background-color: #f4fafa;
+  margin-right: 200px;
 }
 
 .logo {
   font-size: 22px;
   font-weight: bold;
   color: #2c3e50;
+  margin-right: 80px;
 }
 
 .navbar ul {
   list-style: none;
+  
   display: flex;
   gap: 30px;
   margin: 0;
@@ -39,6 +42,7 @@ body {
   cursor: pointer;
   font-size: 16px;
   color: #2c3e50;
+  font-weight: 200;
 }
 
 .hero {
@@ -46,6 +50,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 60px;
+  margin-left: 90px;
   flex: 1;
 }
 
@@ -71,11 +76,16 @@ body {
   border: none;
   border-radius: 6px;
   font-size: 16px;
+  margin : auto;
+  padding-left: 10px;
   cursor: pointer;
 }
 
 .get-started {
   background-color: #48c9b0;
+  width  :200px;
+  margin : auto;
+  
   color: #fff;
   font-weight: bold;
 }
@@ -83,10 +93,10 @@ body {
 .hero-image img {
   width: 450px;
   max-width: 100%;
+  margin: 160px;
   height: auto;
 }
 
-/* MEDIA QUERIES */
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;

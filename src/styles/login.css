@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
 }
@@ -19,7 +19,7 @@
 
 /* --- Login box --- */
 .login-box {
-  background: #fff;
+  background:whitesmoke;
   padding: 2.5rem;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -76,7 +76,7 @@
 button {
   width: 100%;
   padding: 0.8rem;
-  background: #2575fc;
+  background-color: #48c9b0;
   color: #fff;
   font-weight: 600;
   border: none;
